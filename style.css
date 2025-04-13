@@ -1,25 +1,10 @@
-
- h1{
-    color: black;
-    text-align: center;
-    font-family: 'Courier New', Courier, monospace;
-    font-size: 350%;
+//Script to open and close sidebar
+function w3_open() {
+    document.getElementById("mySidebar").style.display = "block";
+    document.getElementById("myOverlay").style.display = "block";
 }
-p{
-    font-family: 'Courier New', Courier, monospace;
-    text-align: center;
-
-}
-img{
-    display: block;
-     margin-left: auto;
-     margin-right: auto;
-}
-div{
-    text-align: center;
-}
-a{
-    color: black;
-    text-decoration: none;
-    font-family: 'Courier New', Courier, monospace;
+ 
+function w3_close() {
+    document.getElementById("mySidebar").style.display = "none";
+    document.getElementById("myOverlay").style.display = "none";
 }
