@@ -1,157 +1,200 @@
 <!DOCTYPE html>
-<html>
-<title>Rahel</title>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<style>
-body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", sans-serif}
-</style>
-<body class="w3-light-grey w3-content" style="max-width:1600px">
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Rahel</title>
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+      body, h1, h2, h3, h4, h5, h6 { font-family: "Raleway", sans-serif }
 
-<!-- Sidebar/menu -->
-<nav class="w3-sidebar w3-collapse w3-white w3-animate-left" style="z-index:3;width:300px;" id="mySidebar"><br>
-  <div class="w3-container">
-    <a href="#" onclick="w3_close()" class="w3-hide-large w3-right w3-jumbo w3-padding w3-hover-grey" title="close menu">
-      <i class="fa fa-remove"></i>
-    </a>
-    <h1><b>PORTFOLIO</b></h1>
-    <h4>Rahel</h4>
-    <p class="w3-text-grey">Data Scientist</p>
-  </div>
-  <div class="w3-bar-block">
-    <a href="#portfolio" onclick="w3_close()" class="w3-bar-item w3-button w3-padding w3-text-teal"><i class="fa fa-th-large fa-fw w3-margin-right"></i>PORTFOLIO</a> 
-    <a href="#about" onclick="w3_close()" class="w3-bar-item w3-button w3-padding"><i class="fa fa-user fa-fw w3-margin-right"></i>ABOUT</a> 
-  </div>
-  <div class="w3-panel w3-large">
-    <i class="fa fa-instagram w3-hover-opacity w3-margin-right"></i>
-    <i class="fa fa-twitter w3-hover-opacity w3-margin-right"></i>
-    <i class="fa fa-envelope w3-hover-opacity w3-margin-right"></i>
-    <i class="fa fa-linkedin w3-hover-opacity"></i>
-  </div>  
-</nav>
-<!-- Overlay effect when opening sidebar on small screens -->
-<div class="w3-overlay w3-hide-large w3-animate-opacity" onclick="w3_close()" style="cursor:pointer" title="close side menu" id="myOverlay"></div>
+      .article-container {
+        max-height: 400px;
+        overflow-y: auto;
+        padding: 10px;
+        margin-top: 20px;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        background-color: #f9f9f9;
+      }
 
-<!-- !PAGE CONTENT! -->
-<div class="w3-main" style="margin-left:300px">
+      .article {
+        display: flex;
+        flex-direction: column;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        background-color: #fff;
+        margin-bottom: 15px;
+      }
 
-  <!-- Header -->
-  <header id="portfolio">
-    <span class="w3-button w3-hide-large w3-xxlarge w3-hover-text-grey" onclick="w3_open()"><i class="fa fa-bars"></i></span>
-    <div class="w3-container">
-    <h1><b>Data Projects</b></h1>
-    <div class="w3-section w3-bottombar w3-padding-16">
-      <button class="w3-button w3-white w3-hide-small"><i></i>Github</button>
-      <button class="w3-button w3-white w3-hide-small"><i></i>Articles</button>
-      <button class="w3-button w3-white w3-hide-small"><i></i>Creative Work</button>
-    </div>
-    </div>
-  </header>
-  
-  <!-- First Photo Grid-->
-  <div class="w3-row-padding">
-    <div class="w3-third w3-container w3-margin-bottom">
-      <img src="/w3images/mountains.jpg" alt="Norway" style="width:100%" class="w3-hover-opacity">
-      <div class="w3-container w3-white">
-        <p><b>Lorem Ipsum</b></p>
-        <p>Praesent tincidunt sed tellus ut rutrum. Sed vitae justo condimentum, porta lectus vitae, ultricies congue gravida diam non fringilla.</p>
-      </div>
-    </div>
-    <div class="w3-third w3-container w3-margin-bottom">
-      <img src="/w3images/lights.jpg" alt="Norway" style="width:100%" class="w3-hover-opacity">
-      <div class="w3-container w3-white">
-        <p><b>Lorem Ipsum</b></p>
-        <p>Praesent tincidunt sed tellus ut rutrum. Sed vitae justo condimentum, porta lectus vitae, ultricies congue gravida diam non fringilla.</p>
-      </div>
-    </div>
-    <div class="w3-third w3-container">
-      <img src="/w3images/nature.jpg" alt="Norway" style="width:100%" class="w3-hover-opacity">
-      <div class="w3-container w3-white">
-        <p><b>Lorem Ipsum</b></p>
-        <p>Praesent tincidunt sed tellus ut rutrum. Sed vitae justo condimentum, porta lectus vitae, ultricies congue gravida diam non fringilla.</p>
-      </div>
-    </div>
-  </div>
-  
-  <!-- Second Photo Grid-->
-  <div class="w3-row-padding">
-    <div class="w3-third w3-container w3-margin-bottom">
-      <img src="/w3images/p1.jpg" alt="Norway" style="width:100%" class="w3-hover-opacity">
-      <div class="w3-container w3-white">
-        <p><b>Lorem Ipsum</b></p>
-        <p>Praesent tincidunt sed tellus ut rutrum. Sed vitae justo condimentum, porta lectus vitae, ultricies congue gravida diam non fringilla.</p>
-      </div>
-    </div>
-    <div class="w3-third w3-container w3-margin-bottom">
-      <img src="/w3images/p2.jpg" alt="Norway" style="width:100%" class="w3-hover-opacity">
-      <div class="w3-container w3-white">
-        <p><b>Lorem Ipsum</b></p>
-        <p>Praesent tincidunt sed tellus ut rutrum. Sed vitae justo condimentum, porta lectus vitae, ultricies congue gravida diam non fringilla.</p>
-      </div>
-    </div>
-    <div class="w3-third w3-container">
-      <img src="/w3images/p3.jpg" alt="Norway" style="width:100%" class="w3-hover-opacity">
-      <div class="w3-container w3-white">
-        <p><b>Lorem Ipsum</b></p>
-        <p>Praesent tincidunt sed tellus ut rutrum. Sed vitae justo condimentum, porta lectus vitae, ultricies congue gravida diam non fringilla.</p>
-      </div>
-    </div>
-  </div>
+      .article img {
+        width: 100%;
+        max-height: 200px;
+        object-fit: cover;
+        border-radius: 8px 8px 0 0;
+      }
 
-  <!-- Pagination -->
-  <div class="w3-center w3-padding-32">
-    <div class="w3-bar">
-      <a href="#" class="w3-bar-item w3-button w3-hover-black">«</a>
-      <a href="#" class="w3-bar-item w3-black w3-button">1</a>
-      <a href="#" class="w3-bar-item w3-button w3-hover-black">2</a>
-      <a href="#" class="w3-bar-item w3-button w3-hover-black">3</a>
-      <a href="#" class="w3-bar-item w3-button w3-hover-black">4</a>
-      <a href="#" class="w3-bar-item w3-button w3-hover-black">»</a>
+      .article h3 {
+        padding: 10px;
+        font-size: 1.2rem;
+        font-weight: bold;
+      }
+
+      .article p {
+        padding: 0 10px 10px;
+        color: #555;
+      }
+
+      .article a {
+        text-decoration: none;
+        color: inherit;
+      }
+
+      .skills-bar {
+        margin-bottom: 20px;
+      }
+      .skills-bar p {
+        margin: 5px 0;
+      }
+
+      @media screen and (max-width: 600px) {
+        .w3-sidebar {
+          width: 100%;
+          height: 100%;
+        }
+        .w3-main {
+          margin-left: 0;
+        }
+      }
+    </style>
+  </head>
+  <body class="w3-light-grey w3-content" style="max-width:1600px">
+
+    <nav class="w3-sidebar w3-collapse w3-white w3-animate-left" style="z-index:3;width:300px;" id="mySidebar"><br>
+      <div class="w3-container">
+        <a href="#" onclick="w3_close()" class="w3-hide-large w3-right w3-jumbo w3-padding w3-hover-grey" title="close menu">
+          <i class="fa fa-remove"></i>
+        </a>
+        <h1><b>PORTFOLIO</b></h1>
+        <h4>Rahel</h4>
+        <p class="w3-text-grey">Data Scientist</p>
+      </div>
+      <div class="w3-bar-block">
+        <a href="#portfolio" onclick="w3_close()" class="w3-bar-item w3-button w3-padding w3-text-teal"><i class="fa fa-th-large fa-fw w3-margin-right"></i>PORTFOLIO</a>
+        <a href="#about" onclick="w3_close()" class="w3-bar-item w3-button w3-padding"><i class="fa fa-user fa-fw w3-margin-right"></i>ABOUT</a>
+      </div>
+      <div class="w3-panel w3-large">
+        <i class="fa fa-instagram w3-hover-opacity w3-margin-right"></i>
+        <i class="fa fa-twitter w3-hover-opacity w3-margin-right"></i>
+        <i class="fa fa-envelope w3-hover-opacity w3-margin-right"></i>
+        <i class="fa fa-linkedin w3-hover-opacity"></i>
+      </div>
+    </nav>
+
+    <div class="w3-overlay w3-hide-large w3-animate-opacity" onclick="w3_close()" style="cursor:pointer" id="myOverlay"></div>
+
+    <div class="w3-main" style="margin-left:300px">
+      <header id="portfolio">
+        <span class="w3-button w3-hide-large w3-xxlarge w3-hover-text-grey" onclick="w3_open()"><i class="fa fa-bars"></i></span>
+        <div class="w3-container">
+          <h1><b>Data Projects</b></h1>
+          <div class="w3-section w3-bottombar w3-padding-16">
+            <button class="w3-button w3-white w3-hide-small"><i></i>Github</button>
+            <button class="w3-button w3-white w3-hide-small"><i></i>Articles</button>
+            <button class="w3-button w3-white w3-hide-small"><i></i>Creative Work</button>
+          </div>
+        </div>
+      </header>
+
+      <div id="articles" class="w3-container">
+        <h2><b>Latest Works</b></h2>
+        <div class="article-container" id="article-list">
+          <!-- Articles will be dynamically added here -->
+        </div>
+      </div>
+
+      <div id="about" class="w3-container w3-padding-large" style="margin-bottom:32px">
+        <h4><b>About Me</b></h4>
+        <p>Graduated from the University of Indonesia, Cultural Sciences, Department of Philosophy. Active reader, writer and thinker. Engaged in many philosophical, political, economic, cultural and other issues. Currently actively studying Data Science. Interested in data and technology, especially in data, security, software, and hardware.</p>
+        <hr>
+
+        <h4>Technical Skills</h4>
+        <div class="skills-bar">
+          <p>Python</p>
+          <div class="w3-grey">
+            <div class="w3-container w3-dark-grey w3-padding w3-center" style="width:95%">95%</div>
+          </div>
+          <p>SQL</p>
+          <div class="w3-grey">
+            <div class="w3-container w3-dark-grey w3-padding w3-center" style="width:85%">85%</div>
+          </div>
+          <p>Writing</p>
+          <div class="w3-grey">
+            <div class="w3-container w3-dark-grey w3-padding w3-center" style="width:80%">80%</div>
+          </div>
+        </div>
+
+        <p>
+          <button class="w3-button w3-dark-grey w3-padding-large w3-margin-top w3-margin-bottom">
+            <i class="fa fa-download w3-margin-right"></i>Download Resume
+          </button>
+        </p>
+      </div>
     </div>
-  </div>
-  <div class="w3-container w3-padding-large" style="margin-bottom:32px">
-    <h4><b>About Me</b></h4>
-    <p>Graduated from the University of Indonesia, Cultural Sciences, Department of Philosophy. Active reader, writer and thinker. Engaged in many philosophical, political, economic, cultural and other issues. Currently actively studying Data Science. Interested in data and technology, especially in data, security, software, and hardware.</p>
-    <hr>
-    
-    <h4>Technical Skills</h4>
-    <!-- Progress bars / Skills -->
-    <p>Python</p>
-    <div class="w3-grey">
-      <div class="w3-container w3-dark-grey w3-padding w3-center" style="width:95%">95%</div>
-    </div>
-    <p>SQL</p>
-    <div class="w3-grey">
-      <div class="w3-container w3-dark-grey w3-padding w3-center" style="width:85%">85%</div>
-    </div>
-    <p>Writing</p>
-    <div class="w3-grey">
-      <div class="w3-container w3-dark-grey w3-padding w3-center" style="width:80%">80%</div>
-    </div>
-    <p>
-      <button class="w3-button w3-dark-grey w3-padding-large w3-margin-top w3-margin-bottom">
-        <i class="fa fa-download w3-margin-right"></i>Download Resume
-      </button>
-    </p>
-<!-- Fiture -->
-</div>
-<nav id="mySidebar" class="w3-sidebar w3-bar-block w3-white w3-animate-left" style="display:none;z-index:5">
-  <button onclick="w3_close()" class="w3-bar-item w3-button w3-large">Close</button>
-</nav>
-<div class="w3-overlay" onclick="w3_close()" style="cursor:pointer" id="myOverlay"></div>
-<script>
-  function w3_open() {
-    document.getElementById("mySidebar").style.display = "block";
-    document.getElementById("myOverlay").style.display = "block";
-  }
-  
-  function w3_close() {
-    document.getElementById("mySidebar").style.display = "none";
-    document.getElementById("myOverlay").style.display = "none";
-  }
-</script>
-</body>
+
+    <script>
+      function w3_open() {
+        document.getElementById("mySidebar").style.display = "block";
+        document.getElementById("myOverlay").style.display = "block";
+      }
+
+      function w3_close() {
+        document.getElementById("mySidebar").style.display = "none";
+        document.getElementById("myOverlay").style.display = "none";
+      }
+
+      // Updated function: supports image + title + description + URL
+      function addArticle(imageSrc, title, description, url) {
+        const articleContainer = document.getElementById('article-list');
+        
+        const article = document.createElement('div');
+        article.classList.add('article');
+        
+        article.innerHTML = `
+          <a href="${url}" target="_blank">
+            <img src="${imageSrc}" alt="${title}">
+            <h3>${title}</h3>
+            <p>${description}</p>
+          </a>
+        `;
+        
+        articleContainer.appendChild(article);
+      }
+
+      // Sample articles with URLs
+      addArticle(
+        '1244x200.jpg',
+        'Data Cleaning Automation',
+        'A script that automates the data cleaning process.',
+        'url'
+      );
+
+      addArticle(
+        'picture',
+        'Market Forecast Model',
+        'Forecasting trends in forex using time-series analysis.',
+        'url'
+      );
+
+      addArticle(
+        'picture',
+        'Machine Learning Pipeline',
+        'End-to-end ML pipeline for classification tasks.',
+        'url'
+      );
+    </script>
+
+  </body>
 </html>
