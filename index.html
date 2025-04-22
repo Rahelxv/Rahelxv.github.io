@@ -112,7 +112,20 @@
       </header>
 
       <div id="articles" class="w3-container">
-        <h2><b>Latest Works</b></h2>
+        <div style="display: flex; justify-content: space-between; align-items: center;">
+          <h2><b>Latest Works</b></h2>
+          <div class="sort-filter" style="position: relative;">
+            <button id="sortButton" class="w3-button w3-dark-grey w3-round" onclick="toggleSortMenu()">Sort & Filter</button>
+            <div id="sortMenu" class="w3-dropdown-content w3-bar-block w3-border" style="display: none; position: absolute; right: 0; top: 40px; z-index: 1; background-color: white;">
+              <div class="w3-bar-item"><b>Sort</b></div>
+              <a href="#" class="w3-bar-item w3-button" onclick="applySort('latest')">Newest First</a>
+              <a href="#" class="w3-bar-item w3-button" onclick="applySort('oldest')">Oldest First</a>
+              <div class="w3-bar-item"><b>Filter</b></div>
+              <a href="#" class="w3-bar-item w3-button" onclick="applyFilter('regression')">Regression</a>
+              <a href="#" class="w3-bar-item w3-button" onclick="applyFilter('tool')">Tools</a> <!--Add New Category below-->
+            </div>
+          </div>
+        </div>
         <div class="article-container" id="article-list">
           <!-- Articles will be dynamically added here -->
         </div>
@@ -176,46 +189,99 @@
         articleContainer.appendChild(article);
       }
 
-      // Sample articles with URLs
-      addArticle(
-        'Image/Thumb.png',
-        'GrayScale Image Processing',
-        'GrayScale Image Processing is a web-based tool that converts color images to grayscale. It offers a simple, fast, and user-friendly interface for effortless image transformation.',
-        'https://grayscale-image-tool-f67c437246b4.herokuapp.com/'
-      );
+      function toggleSortMenu() {
+        const menu = document.getElementById("sortMenu");
+        menu.style.display = menu.style.display === "block" ? "none" : "block";
+      }
 
-      addArticle(
-        'Image/1255.png',
-        'Simple Linear Regression (Job Success Rate and Earnings in USD)',
-        'This project analyzes the relationship between freelancers job success rate and their earnings using simple linear regression. The findings show no significant correlation between the two variables. It includes data cleaning, visualization, and model interpretation.',
-        'https://rahelxv.github.io/Simple_Linear_Regression_Job_Success_Rate_And_Earning/'
-      );
+      function applySort(option) {
+        let sorted = [...articles];
 
-      addArticle(
-        'Image/1258.jpg',
-        'Multiple Linear Regression (Life Expectancy)',
-        'A data analysis project using multiple linear regression to predict life expectancy based on socioeconomic and health indicators. Includes data cleaning, feature selection, statistical modeling, and interpretation of key results to identify the most influential factors.',
-        'https://rahelxv.github.io/Multiple_Linear_Regression_Life_Expectancy/'
-      );
+        if (option === 'oldest') {
+          sorted.sort((a, b) => new Date(a.date) - new Date(b.date));
+        } else if (option === 'latest') {
+          sorted.sort((a, b) => new Date(b.date) - new Date(a.date));
+        }
 
-      addArticle(
-        'Image/78654564.jpg',
-        'Multiple Linear Regression with scikit-learn (Smartphones Price Prediction)',
-        'This project uses multiple linear regression with Scikit-learn to estimate smartphone prices based on various features such as RAM, storage, processor, and camera specs. The model demonstration uses dummy data for low-end, mid-range, and high-end smartphones. You can try predicting prices yourself using the tool provided in this portfolio.',
-        'https://rahelxv.github.io/Multiple_Linear_Regression_Smartphone_Price_Prediction/'
-      );
-      addArticle(
-        'Image/6363.jpg',
-        'Multiple Linear Regression Real Estate Price Prediction',
-        'This project uses a multiple linear regression model to predict house prices per unit area based on property features such as house age, distance to the nearest MRT station, number of nearby convenience stores, and geographic coordinates. The dataset was cleaned, outliers removed, and transformations applied to improve model performance. Multicollinearity was addressed using VIF analysis, and the final model achieved a reasonable R² score, with residual analysis confirming well-distributed errors. This project highlights my skills in data preprocessing, regression modeling, and result interpretation for real-world property data.',
-        'https://rahelxv.github.io/Multiple_Linear_Regression_Real_Estate/'
-      );
-      addArticle(
-        'Image/303.jpg',
-        'Logistics Regression Student Depression Assessment',
-        'This project applies logistic regression to predict the likelihood of student depression based on factors like academic pressure, study satisfaction, sleep habits, and family history. The model was trained using a real-world dataset and includes steps such as data cleaning, feature encoding, multicollinearity checks, and model evaluation. You can explore the model predictions and insights provided in this portfolio',
-        'https://rahelxv.github.io/Logistics_Regression_Student_Depression/'
-      );
+        renderArticles(sorted);
+        document.getElementById("sortMenu").style.display = "none";
+      }
+
+      function applyFilter(category) {
+        const filtered = articles.filter(article => article.category === category);
+        renderArticles(filtered);
+        document.getElementById("sortMenu").style.display = "none";
+      }
+
+      function renderArticles(articleList) {
+        const container = document.getElementById("article-list");
+        container.innerHTML = '';
+        articleList.forEach(article => {
+          const html = `
+            <div class="article">
+              <a href="${article.url}" target="_self">
+                <img src="${article.img}" alt="${article.title}">
+                <h3>${article.title}</h3>
+                <p>${article.desc}</p>
+              </a>
+            </div>
+          `;
+          container.innerHTML += html;
+        });
+      }
+      const articles = [
+  {
+    img: 'Image/Thumb.png',
+    title: 'GrayScale Image Processing',
+    desc: 'GrayScale Image Processing is a web-based tool that converts color images to grayscale. It offers a simple, fast, and user-friendly interface for effortless image transformation.',
+    url: 'https://grayscale-image-tool-f67c437246b4.herokuapp.com/',
+    date: '2023-01-15',
+    category: 'tool'
+  },
+  {
+    img: 'Image/1255.png',
+    title: 'Simple Linear Regression (Job Success Rate and Earnings in USD)',
+    desc: 'This project analyzes the relationship between freelancers job success rate and their earnings using simple linear regression. The findings show no significant correlation between the two variables. It includes data cleaning, visualization, and model interpretation.',
+    url: 'https://rahelxv.github.io/Simple_Linear_Regression_Job_Success_Rate_And_Earning/',
+    date: '2023-01-20',
+    category: 'regression'
+  },
+  {
+    img: 'Image/1258.jpg',
+    title: 'Multiple Linear Regression (Life Expectancy)',
+    desc: 'A data analysis project using multiple linear regression to predict life expectancy based on socioeconomic and health indicators. Includes data cleaning, feature selection, statistical modeling, and interpretation of key results to identify the most influential factors.',
+    url: 'https://rahelxv.github.io/Multiple_Linear_Regression_Life_Expectancy/',
+    date: '2023-02-10',
+    category: 'regression'
+  },
+  {
+    img: 'Image/78654564.jpg',
+    title: 'Multiple Linear Regression with scikit-learn (Smartphones Price Prediction)',
+    desc: 'This project uses multiple linear regression with Scikit-learn to estimate smartphone prices based on various features such as RAM, storage, processor, and camera specs. The model demonstration uses dummy data for low-end, mid-range, and high-end smartphones. You can try predicting prices yourself using the tool provided in this portfolio.',
+    url: 'https://rahelxv.github.io/Multiple_Linear_Regression_Smartphone_Price_Prediction/',
+    date: '2023-03-01',
+    category: 'regression'
+  },
+  {
+    img: 'Image/6363.jpg',
+    title: 'Multiple Linear Regression Real Estate Price Prediction',
+    desc: 'This project uses a multiple linear regression model to predict house prices per unit area based on property features such as house age, distance to the nearest MRT station, number of nearby convenience stores, and geographic coordinates. The dataset was cleaned, outliers removed, and transformations applied to improve model performance. Multicollinearity was addressed using VIF analysis, and the final model achieved a reasonable R² score, with residual analysis confirming well-distributed errors. This project highlights my skills in data preprocessing, regression modeling, and result interpretation for real-world property data.',
+    url: 'https://rahelxv.github.io/Multiple_Linear_Regression_Real_Estate/',
+    date: '2023-04-15',
+    category: 'regression'
+  },
+  {
+    img: 'Image/303.jpg',
+    title: 'Logistics Regression Student Depression Assessment',
+    desc: 'This project applies logistic regression to predict the likelihood of student depression based on factors like academic pressure, study satisfaction, sleep habits, and family history. The model was trained using a real-world dataset and includes steps such as data cleaning, feature encoding, multicollinearity checks, and model evaluation. You can explore the model predictions and insights provided in this portfolio.',
+    url: 'https://rahelxv.github.io/Logistics_Regression_Student_Depression/',
+    date: '2025-04-21',
+    category: 'regression'
+  }
+];
+
+      window.onload = () => applySort('latest');
+
     </script>
 
   </body>
