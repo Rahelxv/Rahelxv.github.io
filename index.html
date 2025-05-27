@@ -377,7 +377,14 @@
     url: 'https://rahelxv.github.io/Temperature_Prediction_Arimax_Model/',
     date: '2025-05-04',
     category: 'Time Series Data'
-   }
+   },
+   {
+    img: 'Image/2121212.jpg',
+    title: 'Website Load Page Using Sarimax Model',
+    desc: "This project forecasts daily website page load traffic using a Seasonal Autoregressive Integrated Moving Average with Exogenous Variables (SARIMAX) model. The modeling workflow includes rigorous data preprocessing steps such as datetime conversion, frequency resampling, and check for first-order or second-order differencing to achieve stationarity, which is confirmed using the Augmented Dickey-Fuller (ADF) test. Seasonal patterns are identified and incorporated into the model with a defined seasonal period. Exogenous predictors—such as day of the week, number of unique visitors, and first-time vs. returning visits—are integrated to improve forecasting precision. Model parameters are optimized using Auto_ARIMA() with AIC and BIC minimization. Evaluation includes both visual inspection of forecast alignment and statistical diagnostics such as residual ACF plots and the Ljung-Box test. Despite good short-term visual forecasts, residual autocorrelation suggests the potential for improvement, possibly through refined feature engineering or advanced machine learning models. The model offers actionable insights for traffic forecasting in web analytics and server capacity planning.",    url: 'https://rahelxv.github.io/Website_Prediction_Sarimax_Model/',
+    date: '2025-05-05',
+    category: 'Time Series Data'
+   }       
 ];
 
       window.onload = () => applySort('latest');
