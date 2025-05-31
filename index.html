@@ -389,13 +389,22 @@
     date: '2025-05-05',
     category: 'Time Series Data'
    },
-     {
+    {
     img: 'Image/699.jpg',
     title: 'Volatility Prediction Using ARCH & GARCH Model',
-    desc: "This project focuses on modeling and forecasting Temperature volatility using Autoregressive Conditional Heteroskedasticity (ARCH) and Generalized ARCH (GARCH) models, with optimal parameter selection based on empirical performance. After transforming raw price data into returns, the workflow involves rigorous preprocessing, including stationarity validation via the Augmented Dickey-Fuller (ADF) test and confirmation of volatility clustering through autocorrelation plots of squared returns. A custom parameter tuning function is used to identify the best-fitting GARCH configuration, leading to the selection of a GARCH(1,3) model based on information criteria and residual diagnostics. The model is iteratively refit in a rolling window to produce dynamic one-step-ahead volatility forecasts. Evaluation includes visual comparison of predicted versus actual volatility, analysis of standardized residuals, and the Ljung-Box test to assess model adequacy. The project demonstrates how volatility models can capture conditional heteroskedasticity and provide actionable insights for financial risk analysis and market behavior interpretation.",    url: 'https://rahelxv.github.io/Volatility_Prediction_Using_ARCH_And_GARCH_Model/',
+    desc: "This project focuses on modeling and forecasting Temperature volatility using Autoregressive Conditional Heteroskedasticity (ARCH) and Generalized ARCH (GARCH) models, with optimal parameter selection based on empirical performance. After transforming raw price data into returns, the workflow involves rigorous preprocessing, including stationarity validation via the Augmented Dickey-Fuller (ADF) test and confirmation of volatility clustering through autocorrelation plots of squared returns. A custom parameter tuning function is used to identify the best-fitting GARCH configuration, leading to the selection of a GARCH(1,3) model based on information criteria and residual diagnostics. The model is iteratively refit in a rolling window to produce dynamic one-step-ahead volatility forecasts. Evaluation includes visual comparison of predicted versus actual volatility, analysis of standardized residuals, and the Ljung-Box test to assess model adequacy. The project demonstrates how volatility models can capture conditional heteroskedasticity and provide actionable insights for financial risk analysis and market behavior interpretation.",    
+    url: 'https://rahelxv.github.io/Volatility_Prediction_Using_ARCH_And_GARCH_Model/',
     date: '2025-05-06',
     category: 'Time Series Data'
-   }       
+   },
+   {
+    img: 'Image/569.jpg',
+    title: 'Visualization of ARIMA Family',
+    desc: "This project explores modeling and forecasting Bitcoin returns using ARIMA and SARIMA family models, with a focus on visualizing model behavior and prediction accuracy. The pipeline begins with transforming raw price data into return series. Multiple ARIMA and SARIMA configurations are tested. visual comparisons are made between predicted and actual returns. Emphasis is placed on how model complexity and information criteria affect predictive performance. The project highlights the strengths and limitations of ARIMA-based models when applied to financial time series and offers visual insight into their temporal prediction patterns.",      
+    url: 'https://rahelxv.github.io/Visualization_of_Arima_Family_Prediction_on_Bitcoin_Returns_Prices/',
+    date: '2025-05-07',
+    category: 'Time Series Data'
+   }  
 ];
 
       window.onload = () => applySort('latest');
