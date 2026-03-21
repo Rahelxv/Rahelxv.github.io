@@ -1,7 +1,7 @@
 # Rahelxv.github.io
 
-Welcome to my personal portfolio website!
-This repository contains the source code for my online portfolio, where I showcase my work in data science, tools I build, and other technical projects I'm working on or have completed.
+Personal Experimental project
+This repository contains examples of all implementations related to machine learning from the simplest to the most complex. When I need it, I just go to this website to explore the examples I have created. Feel free to also doing that.
 
 Here you'll find:
 
