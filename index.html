@@ -9,7 +9,7 @@
 <style>
 :root{
   color-scheme:light;
-  --blue:#be1a1a; --ink:#0b3a40; --muted:#3f6468;
+  --blue:#be1a1a; --ink:#2b0d0d; --muted:#6e4b4b;
   --line:color-mix(in srgb,#be1a1a 22%,#fff); --chip:color-mix(in srgb,#be1a1a 9%,#fff);
   --head:"Bricolage Grotesque","Trebuchet MS",system-ui,sans-serif;
   --body:"IBM Plex Sans","Segoe UI",system-ui,sans-serif;
@@ -63,7 +63,7 @@ a{color:inherit}
 
 /* Slide viewer */
 dialog{border:0;padding:0;background:#fff;color:var(--ink);width:min(960px,96vw);max-height:94vh;border-radius:14px}
-dialog::backdrop{background:rgba(11,58,64,.7)}
+dialog::backdrop{background:rgba(43,13,13,.7)}
 .vbar{color:#fff;display:flex;align-items:center;gap:.5rem;padding:.6rem .8rem;background:var(--blue);flex-wrap:wrap}
 .vbar .title{font:700 1rem var(--head);margin-right:auto}
 .vbar .count{font-size:.9rem;min-width:4.5em;text-align:center}
@@ -109,7 +109,7 @@ dialog::backdrop{background:rgba(11,58,64,.7)}
           <div class="thumb" aria-hidden="true"><span style="height:35%"></span><span style="height:60%"></span><span style="height:45%"></span><span style="height:85%"></span><span style="height:70%"></span></div>
           <div class="txt"><h3>Analisis Divvy Bikes berdasarkan tipe pengguna</h3><p>Perbandingan pola penggunaan sepeda berbagi antar tipe pengguna.</p><span class="open">Buka slide</span></div>
         </button>
-        <button class="project" type="button" data-pdf="slides/Laporan Akhir - Analisis RFM Untuk Segmentasi dan Profil Demografi Pelanggan Bisnis Retail-1.pdf" data-img="images/rfm-retail.jpeg" data-title="Analisis RFM untuk segmentasi pelanggan retail">
+        <button class="project" type="button" data-pdf="slides/Laporan Akhir - Analisis RFM Untuk Segmentasi dan Profil Demografi Pelanggan Bisnis Retail-1.pdf" data-img="images/rfm-retail.jpg" data-title="Analisis RFM untuk segmentasi pelanggan retail">
           <div class="thumb" aria-hidden="true"><span style="height:80%"></span><span style="height:65%"></span><span style="height:55%"></span><span style="height:40%"></span><span style="height:30%"></span></div>
           <div class="txt"><h3>Analisis RFM untuk segmentasi pelanggan retail</h3><p>Segmentasi dan profil demografi pelanggan bisnis retail dengan metode RFM.</p><span class="open">Buka slide</span></div>
         </button>
@@ -190,9 +190,11 @@ dialog::backdrop{background:rgba(11,58,64,.7)}
     });
   });
   document.querySelectorAll('.project[data-img]').forEach(function(b){
-    var im=new Image(); im.alt=''; im.loading='lazy';
+    var base=b.dataset.img.replace(/\.(jpe?g|png|webp)$/i,''), exts=['jpg','jpeg','png','webp','JPG','PNG'], i=0;
+    var im=new Image(); im.alt='';
     im.onload=function(){var t=b.querySelector('.thumb'); t.innerHTML=''; t.classList.add('photo'); t.appendChild(im);};
-    im.src=encodeURI(b.dataset.img);
+    im.onerror=function(){ i++; if(i<exts.length) im.src=encodeURI(base+'.'+exts[i]); };
+    im.src=encodeURI(base+'.'+exts[0]);
   });
   document.getElementById('prev').onclick=function(){go(-1)};
   document.getElementById('next').onclick=function(){go(1)};
