@@ -1,449 +1,201 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Rahel</title>
-    <link rel="icon" type="image/png" href="Image/shark.png">
-    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <style>
-      body, h1, h2, h3, h4, h5, h6 { font-family: "Raleway", sans-serif }
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Rahel – Data Science &amp; Machine Learning</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;700&family=IBM+Plex+Sans:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  color-scheme:light;
+  --blue:#BE1A1A; --ink:#0b3a40; --muted:#3f6468;
+  --line:color-mix(in srgb,#BE1A1A 22%,#fff); --chip:color-mix(in srgb,#BE1A1A 9%,#fff);
+  --head:"Bricolage Grotesque","Trebuchet MS",system-ui,sans-serif;
+  --body:"IBM Plex Sans","Segoe UI",system-ui,sans-serif;
+}
+*,*::before,*::after{box-sizing:border-box}
+body{margin:0;background:#fff;color:var(--ink);font:400 1rem/1.6 var(--body)}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--ink);outline-offset:3px}
+.page{display:grid;gap:1rem;max-width:1180px;margin:0 auto;padding:1rem;grid-template-columns:1fr}
+@media (min-width:900px){
+  .page{grid-template-columns:minmax(300px,.8fr) 1.7fr;gap:1.25rem;padding:1.5rem;align-items:start}
+  .bio{position:sticky;top:1.5rem;min-height:calc(100vh - 3rem)}
+}
+.bio{background:var(--blue);color:#fff;border-radius:18px;padding:clamp(1.5rem,4vw,2.25rem);display:flex;flex-direction:column;gap:1.25rem}
+.avatar{width:96px;height:96px;border-radius:50%;background:#fff;color:var(--blue);display:grid;place-items:center;font:700 2.2rem var(--head)}
+.bio h1{font:700 clamp(2.2rem,5vw,3rem)/1.05 var(--head);margin:0;letter-spacing:-.02em}
+.role{margin:0;font-weight:500}
+.bio p{margin:0;max-width:46ch}
+.links{margin-top:auto;display:flex;flex-wrap:wrap;gap:.6rem}
+.btn{display:inline-flex;align-items:center;min-height:44px;padding:.5rem 1rem;border-radius:999px;border:1.5px solid var(--ink);background:transparent;color:var(--ink);font:500 .95rem var(--body);text-decoration:none;cursor:pointer}
+.btn.primary{background:var(--ink);color:#fff}
+.bio .btn,.vbar .btn{border-color:#fff;color:#fff}
+.bio .btn.primary,.vbar .btn.primary{background:#fff;color:var(--blue)}
+.bio :focus-visible,.vbar :focus-visible{outline-color:#fff}
+.right{min-width:0}
+.panel{border:1px solid var(--line);border-radius:18px;padding:clamp(1.25rem,3.5vw,1.9rem)}
+.panel+.panel{margin-top:1rem}
+.panel h2{font:700 1.4rem/1.2 var(--head);margin:0 0 1rem}
+.skills{display:grid;gap:1rem;grid-template-columns:repeat(auto-fit,minmax(200px,1fr))}
+.skills h3{margin:0 0 .5rem;font:500 .95rem var(--body);color:var(--muted)}
+.chips{display:flex;flex-wrap:wrap;gap:.4rem;margin:0;padding:0;list-style:none}
+.chips li{background:var(--chip);padding:.2rem .7rem;border-radius:999px;font-size:.92rem}
+.projects{display:grid;gap:1rem;grid-template-columns:repeat(auto-fit,minmax(250px,1fr))}
+.project{all:unset;box-sizing:border-box;border:1px solid var(--line);border-radius:12px;overflow:hidden;display:flex;flex-direction:column;cursor:pointer;text-align:left}
+.project:focus-visible{outline:3px solid var(--ink);outline-offset:3px}
+.project:hover{border-color:var(--ink)}
+.thumb{height:110px;background:var(--chip);display:flex;align-items:flex-end;gap:6px;padding:14px 18px}
+.thumb span{flex:1;background:var(--blue);border:1.5px solid var(--ink);border-bottom:0;border-radius:3px 3px 0 0}
+.project .txt{padding:1rem;display:flex;flex-direction:column;gap:.4rem;flex:1}
+.project h3{margin:0;font:700 1.05rem/1.3 var(--head)}
+.project p{margin:0;color:var(--muted);font-size:.95rem}
+.project .open{margin-top:auto;padding-top:.4rem;font-weight:500;font-size:.95rem}
+.timeline{list-style:none;margin:0;padding:0 0 0 1.25rem;border-left:2px solid var(--blue);display:grid;gap:1.4rem}
+.timeline li{position:relative}
+.timeline li::before{content:"";position:absolute;left:calc(-1.25rem - 6px);top:.45rem;width:10px;height:10px;border-radius:50%;background:var(--ink)}
+.timeline h3{margin:0;font:700 1.05rem var(--head)}
+.timeline .when{color:var(--muted);font-size:.9rem;margin:0}
+.timeline p{margin:.3rem 0 0;max-width:62ch}
 
-      .article-container {
-        max-height: 600px;
-        overflow-y: auto;
-        padding: 10px;
-        margin-top: 20px;
-        border: 1px solid #ddd;
-        border-radius: 8px;
-        background-color: #f9f9f9;
-      }
+/* Slide viewer */
+dialog{border:0;padding:0;background:#fff;color:var(--ink);width:min(960px,96vw);max-height:94vh;border-radius:14px}
+dialog::backdrop{background:rgba(11,58,64,.7)}
+.vbar{color:#fff;display:flex;align-items:center;gap:.5rem;padding:.6rem .8rem;background:var(--blue);flex-wrap:wrap}
+.vbar .title{font:700 1rem var(--head);margin-right:auto}
+.vbar .count{font-size:.9rem;min-width:4.5em;text-align:center}
+.stage{padding:.75rem;overflow:auto;max-height:calc(94vh - 70px);text-align:center;background:var(--chip)}
+.stage canvas{max-width:100%;height:auto;background:#fff;box-shadow:0 0 0 1px var(--line)}
+.msg{padding:2rem 1rem}
+</style>
+</head>
+<body>
+<main class="page">
 
-      .article {
-        display: flex;
-        flex-direction: column;
-        border: 1px solid #ddd;
-        border-radius: 8px;
-        background-color: #fff;
-        margin-bottom: 15px;
-      }
-
-      .article img {
-        width: 100%;
-        max-height: 200px;
-        object-fit: cover;
-        border-radius: 8px 8px 0 0;
-      }
-
-      .article h3 {
-        padding: 10px;
-        font-size: 1.2rem;
-        font-weight: bold;
-      }
-
-      .article p {
-        padding: 0 10px 10px;
-        color: #555;
-      }
-
-      .article a {
-        text-decoration: none;
-        color: inherit;
-      }
-
-      .skills-bar {
-        margin-bottom: 20px;
-      }
-      .skills-bar p {
-        margin: 5px 0;
-      }
-
-      @media screen and (max-width: 600px) {
-        .w3-sidebar {
-          width: 100%;
-          height: 100%;
-        }
-        .w3-main {
-          margin-left: 0;
-        }
-      }
-    </style>
-  </head>
-  <body class="w3-light-grey w3-content" style="max-width:1600px">
-
-    <nav class="w3-sidebar w3-collapse w3-white w3-animate-left" style="z-index:3;width:300px;" id="mySidebar"><br>
-      <div class="w3-container">
-        <a href="#" onclick="w3_close()" class="w3-hide-large w3-right w3-jumbo w3-padding w3-hover-grey" title="close menu">
-          <i class="fa fa-remove"></i>
-        </a>
-        <h1><b>Data Science & Mechine Learning</b></h1>
-        <h4>Rahel</h4>
-        <p class="w3-text-grey">All content created by Rahel</p>
-      </div>
-      <div class="w3-bar-block">
-        <a href="#portfolio" onclick="w3_close()" class="w3-bar-item w3-button w3-padding w3-text-teal"><i class="fa fa-th-large fa-fw w3-margin-right"></i>PORTFOLIO</a>
-        <a href="#about" onclick="w3_close()" class="w3-bar-item w3-button w3-padding"><i class="fa fa-user fa-fw w3-margin-right"></i>ABOUT</a>
-      </div>
-      <div class="w3-panel w3-large">
-        <a href="https://www.instagram.com/rahelxv/" target="_blank"><i class="fa fa-instagram w3-hover-opacity w3-margin-right"></i></a>
-        <a href="https://x.com/Rahelxv" target="_blank"><i class="fa fa-twitter w3-hover-opacity w3-margin-right"></i></a>
-        <a href="mailto:Rahelvirgia6@gmail.com" target="_blank"><i class="fa fa-envelope w3-hover-opacity w3-margin-right"></i></a>
-        <a href="https://www.linkedin.com/in/rahelxv/" target="_blank"><i class="fa fa-linkedin w3-hover-opacity"></i></a>
-      </div>
-    </nav>
-
-    <div class="w3-overlay w3-hide-large w3-animate-opacity" onclick="w3_close()" style="cursor:pointer" id="myOverlay"></div>
-
-    <div class="w3-main" style="margin-left:300px">
-      <header id="portfolio">
-        <span class="w3-button w3-hide-large w3-xxlarge w3-hover-text-grey" onclick="w3_open()"><i class="fa fa-bars"></i></span>
-        <div class="w3-container">
-          <h1><b>Data Projects</b></h1>
-          <div class="w3-section w3-bottombar w3-padding-16">
-           <button class="w3-button w3-white" onclick="window.open('https://github.com/Rahelxv', '_blank')">
-              <i class="fa fa-github"></i> GitHub
-            </button>
-            <a href="https://medium.com/@downgradesick/s-p-500-deep-dive-on-statistical-and-technical-analysis-256a3755fbbf" target="_blank">
-            <button class="w3-button w3-white"><i></i>Articles</button>
-            </a>
-            <a href="https://rahelxv.github.io/Gallery/" target="_blank">
-            <button class="w3-button w3-white"><i></i>Creative Work</button>
-            </a>
-          </div>
-        </div>
-      </header>
-
-      <div id="articles" class="w3-container">
-        <div style="display: flex; justify-content: space-between; align-items: center;">
-          <h2><b>Latest Works</b></h2>
-          <div class="sort-filter" style="position: relative;">
-            <button id="sortButton" class="w3-button w3-dark-grey w3-round" onclick="toggleSortMenu()">Sort & Filter</button>
-            <div id="sortMenu" class="w3-dropdown-content w3-bar-block w3-border" style="display: none; position: absolute; right: 0; top: 40px; z-index: 1; background-color: white;">
-              <div class="w3-bar-item"><b>Sort</b></div>
-              <a href="#" class="w3-bar-item w3-button" onclick="applySort('latest')">Newest First</a>
-              <a href="#" class="w3-bar-item w3-button" onclick="applySort('oldest')">Oldest First</a>
-              <div class="w3-bar-item"><b>Filter</b></div>
-              <a href="#" class="w3-bar-item w3-button" onclick="applyFilter('regression')">Regression</a>
-              <a href="#" class="w3-bar-item w3-button" onclick="applyFilter('Clustering')">Clustering</a>
-              <a href="#" class="w3-bar-item w3-button" onclick="applyFilter('Natural Language Processing')">Natural Language Processing</a>
-              <a href="#" class="w3-bar-item w3-button" onclick="applyFilter('Time Series Data')">Time Series Data</a>
-              <a href="#" class="w3-bar-item w3-button" onclick="applyFilter('tool')">Tools</a>
-              <!--Add New Category below-->
-            </div>
-          </div>
-        </div>
-        <div class="article-container" id="article-list">
-          <!-- Articles will be dynamically added here -->
-        </div>
-      </div>
-
-      <div id="about" class="w3-container w3-padding-large" style="margin-bottom:32px">
-        <h4><b>About Me</b></h4>
-        <p>Graduated from the University of Indonesia, Cultural Sciences, Department of Philosophy. Active reader, writer and thinker. Engaged in many philosophical, political, economic, cultural and other issues. Currently actively studying Data Science. Interested in data and technology, especially in data, security, software, and hardware.</p>
-        <hr><br><br>
-        
-        </a>
-        </p>
-      </div>
+  <aside class="bio" aria-label="Bio">
+    <div class="avatar" aria-hidden="true">R</div>
+    <div>
+      <h1>Rahel</h1>
+      <p class="role">Data Science &amp; Machine Learning</p>
     </div>
+    <p>Lulusan Filsafat Universitas Indonesia yang sedang mendalami data science. Saya tertarik pada data, keamanan, perangkat lunak, dan perangkat keras, dan suka menjelaskan temuan data dengan runtut.</p>
+    <div class="links">
+      <a class="btn primary" href="CV/CV.pdf" target="_blank" rel="noopener">Unduh CV</a>
+      <a class="btn" href="https://github.com/Rahelxv" target="_blank" rel="noopener">GitHub</a>
+      <a class="btn" href="https://www.linkedin.com/in/rahelxv/" target="_blank" rel="noopener">LinkedIn</a>
+      <a class="btn" href="mailto:Rahelvirgia6@gmail.com">Email</a>
+      <a class="btn" href="https://www.instagram.com/rahelxv/" target="_blank" rel="noopener">Instagram</a>
+      <a class="btn" href="https://x.com/Rahelxv" target="_blank" rel="noopener">X</a>
+    </div>
+  </aside>
 
-    <script>
-      function w3_open() {
-        document.getElementById("mySidebar").style.display = "block";
-        document.getElementById("myOverlay").style.display = "block";
-      }
+  <div class="right">
+    <section class="panel" aria-labelledby="h-skill">
+      <h2 id="h-skill">Skill</h2>
+      <div class="skills">
+        <div><h3>Pengumpulan data</h3><ul class="chips"><li>Web scraping</li><li>Scrapy</li><li>Playwright</li></ul></div>
+        <div><h3>Analisis</h3><ul class="chips"><li>SQL</li><li>Python</li><li>Machine learning</li></ul></div>
+        <div><h3>Visualisasi</h3><ul class="chips"><li>Dashboard</li><li>Matplotlib</li></ul></div>
+      </div>
+    </section>
 
-      function w3_close() {
-        document.getElementById("mySidebar").style.display = "none";
-        document.getElementById("myOverlay").style.display = "none";
-      }
+    <section class="panel" aria-labelledby="h-project">
+      <h2 id="h-project">Project</h2>
+      <div class="projects">
+        <button class="project" type="button" data-pdf="slides/Presentasi-Data-Analisis-Divvy-Bikes-Berdasarkan-Tipe-Pengguna_compressed-2.pdf" data-title="Analisis Divvy Bikes berdasarkan tipe pengguna">
+          <div class="thumb" aria-hidden="true"><span style="height:35%"></span><span style="height:60%"></span><span style="height:45%"></span><span style="height:85%"></span><span style="height:70%"></span></div>
+          <div class="txt"><h3>Analisis Divvy Bikes berdasarkan tipe pengguna</h3><p>Perbandingan pola penggunaan sepeda berbagi antar tipe pengguna.</p><span class="open">Buka slide</span></div>
+        </button>
+        <button class="project" type="button" data-pdf="slides/Laporan Akhir - Analisis RFM Untuk Segmentasi dan Profil Demografi Pelanggan Bisnis Retail-1.pdf" data-title="Analisis RFM untuk segmentasi pelanggan retail">
+          <div class="thumb" aria-hidden="true"><span style="height:80%"></span><span style="height:65%"></span><span style="height:55%"></span><span style="height:40%"></span><span style="height:30%"></span></div>
+          <div class="txt"><h3>Analisis RFM untuk segmentasi pelanggan retail</h3><p>Segmentasi dan profil demografi pelanggan bisnis retail dengan metode RFM.</p><span class="open">Buka slide</span></div>
+        </button>
+        <button class="project" type="button" data-pdf="slides/Laporan Akhir - Analisis Komparatif Harga Produk Elektronik Shopee vs Tokopedia-1.pdf" data-title="Komparatif harga elektronik: Shopee vs Tokopedia">
+          <div class="thumb" aria-hidden="true"><span style="height:50%"></span><span style="height:50%"></span><span style="height:75%"></span><span style="height:60%"></span><span style="height:90%"></span></div>
+          <div class="txt"><h3>Komparatif harga elektronik: Shopee vs Tokopedia</h3><p>Membandingkan harga produk elektronik di dua marketplace.</p><span class="open">Buka slide</span></div>
+        </button>
+        <button class="project" type="button" data-pdf="slides/Laporan Akhir - Analisis Faktor-Faktor yang Mempengaruhi Harga Smartphone Menggunakan Regresi Linear Berganda-1.pdf" data-title="Faktor yang memengaruhi harga smartphone">
+          <div class="thumb" aria-hidden="true"><span style="height:25%"></span><span style="height:45%"></span><span style="height:65%"></span><span style="height:55%"></span><span style="height:80%"></span></div>
+          <div class="txt"><h3>Faktor yang memengaruhi harga smartphone</h3><p>Regresi linear berganda untuk mencari faktor penentu harga smartphone.</p><span class="open">Buka slide</span></div>
+        </button>
+        <button class="project" type="button" data-pdf="slides/Analisis CSAT Google Maps Reviews Tomoro Coffee di Samarinda-1.pdf" data-title="Analisis CSAT ulasan Tomoro Coffee Samarinda">
+          <div class="thumb" aria-hidden="true"><span style="height:70%"></span><span style="height:55%"></span><span style="height:85%"></span><span style="height:45%"></span><span style="height:65%"></span></div>
+          <div class="txt"><h3>Analisis CSAT ulasan Tomoro Coffee Samarinda</h3><p>Mengukur kepuasan pelanggan dari ulasan Google Maps.</p><span class="open">Buka slide</span></div>
+        </button>
+      </div>
+    </section>
 
-      // Updated function: supports image + title + description + URL
-      function addArticle(imageSrc, title, description, url) {
-        const articleContainer = document.getElementById('article-list');
-        
-        const article = document.createElement('div');
-        article.classList.add('article');
-        
-        article.innerHTML = `
-          <a href="${url}" target="_self">
-            <img src="${imageSrc}" alt="${title}">
-            <h3>${title}</h3>
-            <p>${description}</p>
-          </a>
-        `;
-        
-        articleContainer.appendChild(article);
-      }
+    <section class="panel" aria-labelledby="h-exp">
+      <h2 id="h-exp">Pengalaman</h2>
+      <ol class="timeline">
+        <li><h3>Peran atau kegiatan terbaru</h3><p class="when">Nama organisasi, tahun</p><p>Tanggung jawab singkat dan hasil yang terukur.</p></li>
+        <li><h3>Peran atau kegiatan sebelumnya</h3><p class="when">Nama organisasi, tahun</p><p>Alat yang dipakai dan dampaknya.</p></li>
+        <li><h3>S1 Filsafat</h3><p class="when">Universitas Indonesia</p><p>Logika, argumentasi, dan penulisan analitis yang kini dipakai untuk menyusun narasi data.</p></li>
+      </ol>
+    </section>
+  </div>
+</main>
 
-      function toggleSortMenu() {
-        const menu = document.getElementById("sortMenu");
-        menu.style.display = menu.style.display === "block" ? "none" : "block";
-      }
+<dialog id="viewer" aria-label="Penampil slide">
+  <div class="vbar">
+    <span class="title" id="vtitle"></span>
+    <button class="btn" type="button" id="prev" aria-label="Slide sebelumnya">Sebelumnya</button>
+    <span class="count" id="count" aria-live="polite"></span>
+    <button class="btn" type="button" id="next" aria-label="Slide berikutnya">Berikutnya</button>
+    <a class="btn" id="dl" href="#" target="_blank" rel="noopener">Unduh PDF</a>
+    <button class="btn primary" type="button" id="close">Tutup</button>
+  </div>
+  <div class="stage" id="stage"><canvas id="cv"></canvas><p class="msg" id="msg" hidden></p></div>
+</dialog>
 
-      function applySort(option) {
-        let sorted = [...articles];
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+<script>
+(function(){
+  var dlg=document.getElementById('viewer'), cv=document.getElementById('cv'), ctx=cv.getContext('2d');
+  var msg=document.getElementById('msg'), count=document.getElementById('count'), stage=document.getElementById('stage');
+  var doc=null, page=1, busy=false, pending=null;
+  pdfjsLib.GlobalWorkerOptions.workerSrc='https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
 
-        if (option === 'oldest') {
-          sorted.sort((a, b) => new Date(a.date) - new Date(b.date));
-        } else if (option === 'latest') {
-          sorted.sort((a, b) => new Date(b.date) - new Date(a.date));
-        }
+  function render(n){
+    if(!doc) return;
+    if(busy){pending=n;return;}
+    busy=true; page=n;
+    doc.getPage(n).then(function(p){
+      var w=Math.max(stage.clientWidth-24,280), base=p.getViewport({scale:1});
+      var scale=w/base.width, dpr=window.devicePixelRatio||1;
+      var vp=p.getViewport({scale:scale*dpr});
+      cv.width=vp.width; cv.height=vp.height;
+      cv.style.width=(vp.width/dpr)+'px';
+      count.textContent=n+' / '+doc.numPages;
+      return p.render({canvasContext:ctx,viewport:vp}).promise;
+    }).catch(function(){}).then(function(){
+      busy=false; if(pending){var q=pending;pending=null;render(q);}
+    });
+  }
+  function go(d){ if(doc){var n=page+d; if(n>=1&&n<=doc.numPages) render(n);} }
+  function fail(t){ cv.hidden=true; msg.hidden=false; msg.textContent=t; count.textContent=''; }
 
-        renderArticles(sorted);
-        document.getElementById("sortMenu").style.display = "none";
-      }
-
-      function applyFilter(category) {
-        const filtered = articles.filter(article => article.category === category);
-        renderArticles(filtered);
-        document.getElementById("sortMenu").style.display = "none";
-      }
-
-      function renderArticles(articleList) {
-        const container = document.getElementById("article-list");
-        container.innerHTML = '';
-        articleList.forEach(article => {
-          const html = `
-            <div class="article">
-              <a href="${article.url}" target="_self">
-                <img src="${article.img}" alt="${article.title}">
-                <h3>${article.title}</h3>
-                <p>${article.desc}</p>
-              </a>
-            </div>
-          `;
-          container.innerHTML += html;
-        });
-      }
-      const articles = [
-  {
-    img: 'Image/Thumb.png',
-    title: 'GrayScale Image Processing',
-    desc: 'GrayScale Image Processing is a web-based tool that converts color images to grayscale. It offers a simple, fast, and user-friendly interface for effortless image transformation.',
-    url: 'https://github.com/Rahelxv/-Grayscale-Image-Processing',
-    date: '2023-01-15',
-    category: 'tool'
-  },
-  {
-    img: 'Image/1255.png',
-    title: 'Simple Linear Regression (Job Success Rate and Earnings in USD)',
-    desc: 'This project analyzes the relationship between freelancers job success rate and their earnings using simple linear regression. The findings show no significant correlation between the two variables. It includes data cleaning, visualization, and model interpretation.',
-    url: 'https://rahelxv.github.io/Simple_Linear_Regression_Job_Success_Rate_And_Earning/',
-    date: '2023-01-20',
-    category: 'regression'
-  },
-  {
-    img: 'Image/1258.jpg',
-    title: 'Multiple Linear Regression (Life Expectancy)',
-    desc: 'A data analysis project using multiple linear regression to predict life expectancy based on socioeconomic and health indicators. Includes data cleaning, feature selection, statistical modeling, and interpretation of key results to identify the most influential factors.',
-    url: 'https://rahelxv.github.io/Multiple_Linear_Regression_Life_Expectancy/',
-    date: '2023-02-10',
-    category: 'regression'
-  },
-  {
-    img: 'Image/78654564.jpg',
-    title: 'Multiple Linear Regression with scikit-learn (Smartphones Price Prediction)',
-    desc: 'This project uses multiple linear regression with Scikit-learn to estimate smartphone prices based on various features such as RAM, storage, processor, and camera specs. The model demonstration uses dummy data for low-end, mid-range, and high-end smartphones. You can try predicting prices yourself using the tool provided in this portfolio.',
-    url: 'https://rahelxv.github.io/Multiple_Linear_Regression_Smartphone_Price_Prediction/',
-    date: '2023-03-01',
-    category: 'regression'
-  },
-  {
-    img: 'Image/6363.jpg',
-    title: 'Multiple Linear Regression Real Estate Price Prediction',
-    desc: 'This project uses a multiple linear regression model to predict house prices per unit area based on property features such as house age, distance to the nearest MRT station, number of nearby convenience stores, and geographic coordinates. The dataset was cleaned, outliers removed, and transformations applied to improve model performance. Multicollinearity was addressed using VIF analysis, and the final model achieved a reasonable R² score, with residual analysis confirming well-distributed errors. This project highlights my skills in data preprocessing, regression modeling, and result interpretation for real-world property data.',
-    url: 'https://rahelxv.github.io/Multiple_Linear_Regression_Real_Estate/',
-    date: '2023-04-15',
-    category: 'regression'
-  },
-  {
-    img: 'Image/303.jpg',
-    title: 'Logistics Regression Student Depression Assessment',
-    desc: 'This project applies logistic regression to predict the likelihood of student depression based on factors like academic pressure, study satisfaction, sleep habits, and family history. The model was trained using a real-world dataset and includes steps such as data cleaning, feature encoding, multicollinearity checks, and model evaluation. You can explore the model predictions and insights provided in this portfolio.',
-    url: 'https://rahelxv.github.io/Logistics_Regression_Student_Depression/',
-    date: '2025-04-20',
-    category: 'regression'
-  },
-  {
-    img: 'Image/456.jpg',
-    title: 'KMeans Clustering Billionaires',
-    desc: 'This project applies KMeans clustering to group billionaires based on their age and 2024 net worth. The dataset was cleaned and standardized to ensure meaningful clustering. The optimal number of clusters was determined using the Elbow Method. The resulting clusters revealed distinct groups, such as ultra-wealthy elites, emerging younger billionaires, and older individuals with moderate wealth. This project do unsupervised learning, data preprocessing, clustering evaluation, and visual insight generation for socioeconomic data.',
-    url: 'https://rahelxv.github.io/Billionaires_KMeans_Clustering/',
-    date: '2025-04-21',
-    category: 'Clustering'
-  },
-  {
-    img: 'Image/1013.jpg',
-    title: 'Movies Dendrogram',
-    desc: 'This project applies hierarchical clustering to a dataset of top-rated movies to visually explore patterns in their attributes using a dendrogram. By calculating distances between films based on their numerical features (e.g., ratings, votes, year), we uncover natural groupings of similar movies. The dendrogram provides an intuitive tree-like visualization, and a cutoff line is used to identify the optimal number of clusters. This analysis highlights how movie titles with similar audience responses or release periods tend to group together, offering a unique perspective on cinematic trends and viewer preferences.',
-    url: 'https://rahelxv.github.io/Dendrogram_Movie/',
-    date: '2025-04-22',
-    category: 'Clustering'
-  },
-  {
-    img: 'Image/1212.jpg',
-    title: 'Healthiest Foods Heatmaps and Dendrogram',
-    desc: 'This project visualizes the nutritional profile of various foods using heatmaps and hierarchical clustering (dendrograms). The heatmap highlights patterns in nutrient density, while the dendrogram groups foods with similar health properties, helping identify top antioxidant-rich and nutrient-dense items. This project do data preprocessing, visualization, and clustering for deriving meaningful health-related insights.',
-    url: 'https://rahelxv.github.io/Heatmaps_Healthiest_Foods/',
-    date: '2025-04-23',
-    category: 'Clustering'
-  },
-  {
-    img: 'Image/2277.jpg',
-    title: 'Sentiment Analysis of Bitcoin-Related Tweets',
-    desc: 'This project performs sentiment analysis on Bitcoin-related tweets by applying text preprocessing, automatic labeling using the VADER sentiment analyzer, and class balancing through oversampling. It transforms the cleaned data into numerical features using TF-IDF vectorization with n-grams, and trains a Multinomial Naive Bayes model to classify sentiments as positive or negative. This project demonstrates the full pipeline of text data cleaning, feature extraction, model training, evaluation, and prepares the model for future deployment as a web-based sentiment prediction tool.',
-    url: 'https://rahelxv.github.io/Sentiment_Analysis_Bitcoin_Related_Tweets/',
-    date: '2025-04-24',
-    category: 'Natural Language Processing'
-  },
-  {
-    img: 'Image/1010.jpg',
-    title: 'Sentiment Analyzer (Bitcoin Tweet)',
-    desc: 'This project analyzes Bitcoin-related tweets by applying text preprocessing and sentiment labeling using a manually cleaned dataset. It transforms the cleaned tweets into numerical features through CountVectorizer and trains a Multinomial Naive Bayes model to classify sentiments as positive or negative. The project demonstrates a complete pipeline from data cleaning, feature engineering, model training, and deployment preparation, culminating in a web-based application that predicts tweet sentiments in real time.',
-    url: 'https://github.com/Rahelxv/Bitcoin_Tweet_Sentiment_Analyzer',
-    date: '2025-04-25',
-    category: 'tool'
-  },
-  {
-    img: 'Image/666.jpg',
-    title: 'Daily USDJPY Triple Exponential Smoothing (Holt winters)',
-    desc: 'This project forecasts the USD/JPY exchange rate using Triple Exponential Smoothing (Holt-Winters method) on daily historical data. It involves comprehensive data preprocessing, including handling missing values, setting a consistent time frequency, and renaming variables for clarity. The project explores seasonality and trend through visualizations and statistical decomposition to confirm the presence of strong annual cycles. The Holt-Winters model, configured with additive trend and seasonality and a yearly period of 365 days, is trained on 80% of the data and tested on the remaining 20%. The workflow covers the full forecasting pipeline—data preparation, model fitting, performance evaluation using MAE, RMSE, and MAPE metrics, and visual assessment—offering insights into both the models capability and its limitations in capturing long-term forex patterns.',
-    url: 'https://rahelxv.github.io/Daily_USDJPY_Triple_Exponential_Smoothing/',
-    date: '2025-04-28',
-    category: 'Time Series Data'
-  },
-  {
-    img: 'Image/777.jpg',
-    title: 'Sarima Barley Price Prediction',
-    desc: 'This project forecasts the price of barley in Alberta using the Seasonal ARIMA (SARIMA) model on annual historical data. It involves systematic data preprocessing, including filtering specific crop types and geographic regions, handling missing values, and renaming variables for clarity. The project examines underlying trends and seasonality through exploratory data analysis and decomposition plots to confirm cyclical patterns. The SARIMA model configured with optimized seasonal and non-seasonal parameters to capture yearly patterns. The workflow encompasses the complete forecasting pipeline—data preparation, model fitting, parameter tuning, evaluation using MAE, RMSE, and MAPE, and visual interpretation—highlighting both the strengths and limitations of the model in predicting agricultural price fluctuations.',
-    url: 'https://rahelxv.github.io/Barley_Price_Prediction/',
-    date: '2025-04-29',
-    category: 'Time Series Data'
-  },
-   {
-    img: 'Image/805.jpg',
-    title: 'Dogeusdt Price Prediction AutoRegressive ',
-    desc: 'This project forecasts the closing price of Dogecoin (DOGE) using an Autoregressive (AR) model on daily historical cryptocurrency data. It involves methodical data preprocessing, including time-based filtering, handling missing values, and ensuring proper datetime indexing. The project conducts exploratory data analysis to identify key statistical properties, followed by stationarity testing and differencing to transform the series for AR modeling. The optimal lag parameter is selected based on PACF analysis and validated with AIC/BIC scores. The forecasting workflow covers data preparation, model training, residual diagnostics, and evaluation. Residual plots, histograms, ACF/PACF diagnostics, and Q-Q plots are used to assess the model’s performance and adherence to assumptions, highlighting its predictive power and limitations in capturing volatility-driven price behavior in cryptocurrency markets.',
-    url: 'https://rahelxv.github.io/Dogecoin_Price_Prediction_AutoRegressive/',
-    date: '2025-04-30',
-    category: 'Time Series Data'
-  },
-   {
-    img: 'Image/656.jpg',
-    title: 'Pepe Coin Moving Average Model Prediction',
-    desc: 'This project forecasts the closing price of PEPE Coin using a Moving Average (MA) model applied to the returns of daily historical cryptocurrency data. The workflow begins with comprehensive data preprocessing, including datetime indexing, handling of missing values, and calculation of daily returns to transform the series for stationarity. Exploratory data analysis is conducted to inspect the data distribution, temporal behavior, and seasonality using Q-Q plots and monthly seasonal plots. Stationarity is validated through visual inspection and statistical testing. The MA model is fitted on the return series, with lag selection informed by autocorrelation analysis and iterative evaluation. The forecasted returns are then reconstructed into price levels for interpretability. The project demonstrates the MA model’s strengths in trend estimation while noting its limitations in capturing abrupt price movements typical in volatile crypto markets like PEPE.',    
-    url: 'https://rahelxv.github.io/Moving_Average_Prediction_Pepe_Coin/',
-    date: '2025-05-01',
-    category: 'Time Series Data'
-  },
-   {
-    img: 'Image/987.jpg',
-    title: 'Tron Coin ARMA Model Prediction',
-    desc: 'This project forecasts the closing price of TRIN Coin using an Autoregressive Moving Average (ARMA) model applied to the log returns of daily historical cryptocurrency data. The analytical workflow begins with structured data preprocessing, including datetime parsing, missing value handling, and transformation of raw prices into log return series to achieve stationarity. Exploratory data analysis includes distribution checks, volatility inspection, and autocorrelation diagnostics to guide model formulation. Stationarity is validated through ADF tests and differencing techniques. The optimal ARMA parameters are selected based on AIC and BIC scores, supported by iterative likelihood ratio (LLR) testing. Once fitted, the ARMA model forecasts future returns, which are subsequently reintegrated to obtain price level predictions. The project highlights ARMA capacity to model both trend persistence and random shocks, while acknowledging its sensitivity to parameter tuning and limitations in highly erratic market regimes such as that of TRON Coin.',    
-    url: 'https://rahelxv.github.io/Tron_Coin_ARMA_Prediction/',
-    date: '2025-05-02',
-    category: 'Time Series Data'
-   },
-  {
-    img: 'Image/357.jpg',
-    title: 'Gold Price Prediction Using Arima Model',
-    desc: 'This project forecasts the closing price of Gold using an Autoregressive Integrated Moving Average (ARIMA) model applied to daily historical price data. The modeling pipeline begins with comprehensive data preprocessing, including timestamp normalization, missing value imputation, and differencing to ensure stationarity. Stationarity is rigorously evaluated using the Augmented Dickey-Fuller (ADF) test. The optimal ARIMA configuration is determined using Auto_ARIMA(), guided by minimization of the Akaike Information Criterion (AIC) and Bayesian Information Criterion (BIC), with model adequacy assessed through residual diagnostics. While Auto_ARIMA provides an efficient parameter selection process, the resulting model remains too simplistic to fully capture the underlying complexity and nonlinear dynamics of gold price movements.',    
-    url: 'https://rahelxv.github.io/Gold_Price_Prediction_Arima_Model/',
-    date: '2025-05-03',
-    category: 'Time Series Data'
-   },
-    {
-    img: 'Image/6521.jpg',
-    title: 'Temperature Prediction Using Arimax Model',
-    desc: 'This project forecasts hourly temperature values using an Autoregressive Integrated Moving Average with Exogenous Variables (ARIMAX) model applied to historical weather data. The modeling pipeline includes robust preprocessing steps such as timestamp parsing, missing value imputation, and first-order differencing to achieve stationarity. Stationarity is validated using the Augmented Dickey-Fuller (ADF) test. The model incorporates multiple exogenous predictors including humidity, wind speed, and atmospheric pressure to enhance forecasting accuracy. Optimal ARIMAX parameters are selected via Auto_ARIMA(), using AIC and BIC minimization as evaluation criteria. Model performance is assessed through residual diagnostics and forecast accuracy metrics such as MAE, RMSE, and MAPE. The resulting model demonstrates strong capability in capturing short-term temperature fluctuations in an hourly setting, offering practical value for localized weather forecasting applications.',    
-    url: 'https://rahelxv.github.io/Temperature_Prediction_Arimax_Model/',
-    date: '2025-05-04',
-    category: 'Time Series Data'
-   },
-   {
-    img: 'Image/2121212.jpg',
-    title: 'Website Load Page Using Sarimax Model',
-    desc: "This project forecasts daily website page load traffic using a Seasonal Autoregressive Integrated Moving Average with Exogenous Variables (SARIMAX) model. The modeling workflow includes rigorous data preprocessing steps such as datetime conversion, frequency resampling, and check for first-order or second-order differencing to achieve stationarity, which is confirmed using the Augmented Dickey-Fuller (ADF) test. Seasonal patterns are identified and incorporated into the model with a defined seasonal period. Exogenous predictors—such as day of the week, number of unique visitors, and first-time vs. returning visits—are integrated to improve forecasting precision. Model parameters are optimized using Auto_ARIMA() with AIC and BIC minimization. Evaluation includes both visual inspection of forecast alignment and statistical diagnostics such as residual ACF plots and the Ljung-Box test. Despite good short-term visual forecasts, residual autocorrelation suggests the potential for improvement, possibly through refined feature engineering or advanced machine learning models. The model offers actionable insights for traffic forecasting in web analytics and server capacity planning.",    
-    url: 'https://rahelxv.github.io/Website_Prediction_Sarimax_Model/',
-    date: '2025-05-05',
-    category: 'Time Series Data'
-   },
-    {
-    img: 'Image/699.jpg',
-    title: 'Volatility Prediction Using ARCH & GARCH Model',
-    desc: "This project focuses on modeling and forecasting Temperature volatility using Autoregressive Conditional Heteroskedasticity (ARCH) and Generalized ARCH (GARCH) models, with optimal parameter selection based on empirical performance. After transforming raw price data into returns, the workflow involves rigorous preprocessing, including stationarity validation via the Augmented Dickey-Fuller (ADF) test and confirmation of volatility clustering through autocorrelation plots of squared returns. A custom parameter tuning function is used to identify the best-fitting GARCH configuration, leading to the selection of a GARCH(1,3) model based on information criteria and residual diagnostics. The model is iteratively refit in a rolling window to produce dynamic one-step-ahead volatility forecasts. Evaluation includes visual comparison of predicted versus actual volatility, analysis of standardized residuals, and the Ljung-Box test to assess model adequacy. The project demonstrates how volatility models can capture conditional heteroskedasticity and provide actionable insights for financial risk analysis and market behavior interpretation.",    
-    url: 'https://rahelxv.github.io/Volatility_Prediction_Using_ARCH_And_GARCH_Model/',
-    date: '2025-05-06',
-    category: 'Time Series Data'
-   },
-   {
-    img: 'Image/569.jpg',
-    title: 'Visualization of ARIMA Family',
-    desc: "This project explores modeling and forecasting Bitcoin returns using ARIMA and SARIMA family models, with a focus on visualizing model behavior and prediction accuracy. The pipeline begins with transforming raw price data into return series. Multiple ARIMA and SARIMA configurations are tested. visual comparisons are made between predicted and actual returns. Emphasis is placed on how model complexity and information criteria affect predictive performance. The project highlights the strengths and limitations of ARIMA-based models when applied to financial time series and offers visual insight into their temporal prediction patterns.",      
-    url: 'https://rahelxv.github.io/Visualization_of_Arima_Family_Prediction_on_Bitcoin_Returns_Prices/',
-    date: '2025-05-07',
-    category: 'Time Series Data'
-   },
-  {
-    img: 'Image/822.jpg',
-    title: 'Website View Prediction with Prophet Model',
-    desc: "This project focuses on forecasting daily website page views using Facebook's Prophet model. The workflow begins with time series preprocessing and feature engineering, including regressors such as ad spend and holiday indicators. An 80/20 time-based train-test split is applied to preserve temporal order. Hyperparameters are tuned using cross-validation to improve forecast accuracy. The model's predictions are evaluated against actual values using MAPE and RMSE. Seasonal decomposition and component plots offer clear insights into trend, weekly, and yearly patterns. The project demonstrates the effectiveness of Prophet in capturing complex seasonality and external influences in web traffic forecasting.",      
-    url: 'https://rahelxv.github.io/Website_View_Prediction_with_Prophet_Model/',
-    date: '2025-05-08',
-    category: 'Time Series Data'
-   },
-   {
-    img: 'Image/735.jpg',
-    title: 'Rainfall Samarinda Prophet Model',
-    desc: "This project focuses on forecasting monthly rainfall in Samarinda using Facebook's Prophet model. The workflow begins with time series preprocessing, missing value imputation, and exploratory analysis to uncover seasonal patterns and anomalies. An 80/20 time-based train-test split is applied to maintain chronological integrity. The model is tuned using cross-validation to optimize parameters such as changepoint and seasonality priors. Forecast accuracy is evaluated using MAPE and RMSE metrics. A residual analysis is performed to identify and visualize extreme rainfall outliers, which are then analyzed by year to detect temporal trends. The project reveals both clear seasonality and an increasing intensity of outlier rainfall events, suggesting shifts in climate behavior and highlighting the limitations of purely seasonal models when facing extreme weather variability.",
-     url: 'https://rahelxv.github.io/Rainfall_Samarinda_Prophet_Model/',
-    date: '2025-05-09',
-    category: 'Time Series Data'
-   },
-    {
-    img: 'Image/5656.jpg',
-    title: 'EURJPY 5 Minute LSTM Model Forecast',
-    desc: "This project focuses on forecasting 5-minute EURJPY price movements using an LSTM neural network. The workflow includes constructing a multivariate time series with covariates such as spread, tick volume, and temporal features like weekday and hour. Data is scaled and windowed to meet LSTM input requirements. The model is tuned through cross-validation across hyperparameters like hidden dimensions, layer count, learning rate, and input chunk length. Forecast performance is evaluated using RMSE, MAE, and MAPE metrics. Residual diagnostics and plots comparing predictions to actual prices help identify lagged response patterns and potential overfitting.",     
-    url: 'https://rahelxv.github.io/EURJPY_5_Minute_LSTM_Model/',
-    date: '2025-05-10',
-    category: 'Time Series Data'
-   },
-    {
-    img: 'Image/10721.jpg',
-    title: 'Multiple Time Series Forecasting Online Retail Dataset with LSTM Model',
-    desc:'This project focuses on forecasting sales quantity over time using an LSTM neural network on the Online Retail dataset. Each product (identified by StockCode) is treated as an individual time series, enabling multiple time series forecasting within a unified LSTM framework. The workflow involves cleaning transactional data, resampling to consistent time intervals, and engineering covariates such as weekday and month. The data is scaled and windowed to fit the LSTM’s sequential input structure. The model is trained across grouped time series, with hyperparameters like hidden units, number of layers, dropout, and input chunk length optimized via grid search. Evaluation metrics including RMSE are computed per series to assess forecasting accuracy.',    
-    url: 'https://rahelxv.github.io/Multiple_Time_Series_Forecasting_LSTM_Model/',
-    date: '2025-05-11',
-    category: 'Time Series Data'
-   },
-   {
-    img: 'Image/151515.jpg',
-    title: 'USDJPY 5 Minute Forecasting with Temporal Fusion Transformer (TFT)',
-    desc: "This project focuses on forecasting short-term price movements of the USDJPY currency pair using the Temporal Fusion Transformer (TFT) model. The dataset consists of 5-minute interval data, incorporating technical indicators such as moving average, spread and tick volume as past covariates, and temporal features like hour and weekday as future covariates. The data undergoes preprocessing steps including resampling, gap handling, scaling, and time feature engineering. The TFT model is trained on a single series with rich covariate context, enabling it to learn complex temporal dependencies and attention-based feature relevance. Hyperparameters including hidden size, attention heads, input/output chunk lengths, and dropout rates are tuned via cross-validation. The model’s performance is evaluated using RMSE, MAE, and residual plots to assess both accuracy and stability in capturing intraday forex patterns.",   
-    url: 'https://rahelxv.github.io/USDJPY_5_Minute_Forecasting_with_Temporal_Fusion_Transformer/',
-    date: '2025-05-12',
-    category: 'Time Series Data'
-   },
-   {
-    img: 'Image/1919.jpg',
-    title: 'Official Trump USD Coin Prediction With N-BEATS Model',
-    desc: "This project focuses on forecasting the daily price of the Official Trump USD Coin using the N-BEATS (Neural Basis Expansion Analysis for Time Series) model. The dataset spans from January to June 2025 and includes market capitalization and total volume as past covariates. Temporal features such as day, week, and month are encoded using both cyclic and positional time encoders. The data undergoes preprocessing steps including resampling, timezone handling, scaling, and encoder transformation. The N-BEATS model is trained on the transformed series with structured covariates to capture both short- and long-term trends. Model parameters such as input/output chunk length, number of stacks, and layer widths are tuned via grid search. Performance is assessed using cross-validation folds with RMSE as the main evaluation metric, and the final forecast is visualized alongside actual price trajectories to evaluate the model’s ability to capture political-meme coin dynamics.",
-    url: 'https://rahelxv.github.io/Official_Trump_USD_Coin_Prediction_With_N-BEATS_Model/',
-    date: '2025-05-13',
-    category: 'Time Series Data'
-   } 
-];
-
-      window.onload = () => applySort('latest');
-
-    </script>
-
-  </body>
+  document.querySelectorAll('.project').forEach(function(b){
+    b.addEventListener('click',function(){
+      var url=encodeURI(b.dataset.pdf);
+      document.getElementById('vtitle').textContent=b.dataset.title;
+      document.getElementById('dl').href=url;
+      doc=null; cv.hidden=false; msg.hidden=true; count.textContent='Memuat…';
+      dlg.showModal(); stage.scrollTop=0;
+      pdfjsLib.getDocument(url).promise.then(function(d){doc=d;render(1);})
+        .catch(function(){fail('File '+url+' tidak ditemukan. Pastikan sudah diunggah ke folder slides.');});
+    });
+  });
+  document.getElementById('prev').onclick=function(){go(-1)};
+  document.getElementById('next').onclick=function(){go(1)};
+  document.getElementById('close').onclick=function(){dlg.close()};
+  dlg.addEventListener('click',function(e){ if(e.target===dlg) dlg.close(); });
+  dlg.addEventListener('keydown',function(e){
+    if(e.key==='ArrowRight') go(1); else if(e.key==='ArrowLeft') go(-1);
+  });
+  var t; window.addEventListener('resize',function(){clearTimeout(t);t=setTimeout(function(){if(dlg.open&&doc)render(page);},150);});
+})();
+</script>
+</body>
 </html>
-
-
-
-
